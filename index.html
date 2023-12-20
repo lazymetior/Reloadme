@@ -22,7 +22,7 @@
       font-size: 24px;
     }
 
-    .social-button {
+    .social-link {
       display: inline-block;
       margin: 10px;
       padding: 10px 20px;
@@ -30,13 +30,15 @@
       text-align: center;
       text-decoration: none;
       color: #fff;
-      background-color: #ac1a96; /* Instagram green color */
-      border: none;
       border-radius: 5px;
       cursor: pointer;
     }
 
-    #twitter-button {
+    #instagram-link {
+      background-color: #ac1a96; /* Instagram green color */
+    }
+
+    #twitter-link {
       background-color: #3498db; /* Twitter blue color */
     }
   </style>
@@ -44,9 +46,9 @@
 <body>
 
     <div id="loading-message">
-      <p>Connect over.sarcasm </p>
-      <button class="social-button" onclick="redirectToProfile('instagram')">Instagram</button>
-      <button id="twitter-button" class="social-button" onclick="redirectToProfile('twitter')">Twitter</button>
+      <p>Connect over sarcasm</p>
+      <a id="instagram-link" class="social-link" href="#" onclick="redirectToProfile('instagram')">Instagram</a>
+      <a id="twitter-link" class="social-link" href="#" onclick="redirectToProfile('twitter')">Twitter</a>
     </div>
   
     <script>
@@ -58,7 +60,7 @@
           .then(data => {
             // Use the specified social media profile URL
             const profileURL = data[profile];
-            window.location.href = profileURL;
+            window.open(profileURL, '_blank');
           })
           .catch(error => console.error('Error fetching config.json:', error));
       }
